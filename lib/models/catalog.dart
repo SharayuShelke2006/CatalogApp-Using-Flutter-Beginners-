@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 class CatalogModel {
   static List<Item> items = [];
@@ -39,7 +39,7 @@ class Item {
     );
   }
 
-  toMap() => {
+  Map<String, Object> toMap() => {
         "id": id,
         "name": name,
         "desc": desc,

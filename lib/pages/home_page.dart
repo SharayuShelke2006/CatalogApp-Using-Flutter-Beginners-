@@ -6,6 +6,8 @@ import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
-  loadData() async {
+  Future<void> loadData() async {
     await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");

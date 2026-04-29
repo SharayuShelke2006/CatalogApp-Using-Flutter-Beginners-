@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -12,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final _formKey = GlobalKey<FormState>();
 
- moveToHome(BuildContext context) async {
+ Future<void> moveToHome(BuildContext context) async {
   if (_formKey.currentState!.validate()) {
     setState(() {
       changeButton = true;

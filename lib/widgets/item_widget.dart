@@ -5,9 +5,9 @@ class ItemWidget extends StatelessWidget {
   final Item item;
 
   const ItemWidget({
-    Key? key,
+    super.key,
     required this.item,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
