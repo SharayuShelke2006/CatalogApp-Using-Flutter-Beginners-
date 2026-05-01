@@ -1,20 +1,40 @@
-📱 Flutter Catalog App
+# 📱 Flutter Catalog App
 
-A simple and responsive e-commerce catalog app built using Flutter. The app displays a list of products, allows users to view details, and manage items in a shopping cart.
+A simple and responsive **e-commerce catalog app** built using Flutter. The app displays a list of products, allows users to view details, and manage items in a shopping cart.
 
-🚀 Features
-Browse product catalog
-View product details
-Add/remove items from cart
-Dynamic cart total price calculation
-Cart badge showing number of items
-Clean UI with light/dark theme support
-State management using VelocityX
-🛠 Tech Stack
-Flutter (UI Framework)
-Dart
-VelocityX (State Management)
+---
 
-📌 Description
+## 🚀 Features
 
-This project demonstrates building a basic shopping app with state management, navigation, and dynamic UI updates. It focuses on clean architecture and real-time updates using mutations.
+- 🛍️ Browse product catalog  
+- 📄 View product details  
+- ➕ Add items to cart  
+- ➖ Remove items from cart  
+- 💰 Dynamic total price calculation  
+- 🛒 Cart badge showing item count  
+- 🌗 Light & Dark theme support  
+- ⚡ Real-time UI updates using state management  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Flutter** (UI Framework)  
+- **Dart**  
+- **VelocityX** (State Management)  
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates how to build a basic shopping application with:
+
+- Navigation between screens  
+- State management using mutations  
+- Dynamic UI updates without `setState()`  
+- Clean and maintainable code structure  
+
+---
+## 👨‍💻 Author
+
+- Developed as a Flutter learning project 🚀
