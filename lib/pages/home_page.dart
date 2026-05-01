@@ -9,6 +9,9 @@ import 'package:flutter_application_1/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_application_1/models/mutations.dart';
+
+import 'package:flutter_application_1/core/store.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,18 +51,44 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, MyRoutes.cartRoute),
+      floatingActionButton: VxBuilder(
+  mutations: {AddMutation, RemoveMutation}, // 👈 listen to cart changes
+  builder: (context, MyStore store, status) {
+    final cart = store.cart;
 
-        // ❌ context.theme.buttonColor removed
-        backgroundColor: MyTheme.darkBluishColor,
-
-        child: const Icon(
-          CupertinoIcons.cart,
-          color: Colors.white,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, MyRoutes.cartRoute);
+          },
+          backgroundColor: MyTheme.darkBluishColor,
+          child: const Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
-      ),
+
+        // 🔴 Badge
+        if (cart.items.isNotEmpty)
+          Positioned(
+            right: -5,
+            top: -5,
+            child: CircleAvatar(
+              radius: 10,
+              backgroundColor: Colors.red,
+              child: "${cart.items.length}"
+                  .text
+                  .xs
+                  .white
+                  .make(),
+            ),
+          ),
+      ],
+    );
+  },
+),
 
       body: SafeArea(
         child: Container(

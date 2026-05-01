@@ -4,9 +4,16 @@ import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'core/store.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    VxState(
+      store: MyStore(), // ✅ provide store (not null)
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +26,7 @@ class MyApp extends StatelessWidget {
 
       themeMode: ThemeMode.system,
 
-      // ❌ remove context
+     
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
 

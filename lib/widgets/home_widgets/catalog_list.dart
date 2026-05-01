@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_application_1/widgets/home_widgets/add_to_cart.dart';
 
 import 'catalog_image.dart';
 
@@ -15,7 +17,7 @@ class CatalogList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.getByPosition(index);
+        final catalog = CatalogModel.items[index];
 
         return InkWell(
           onTap: () => Navigator.push(
@@ -44,12 +46,9 @@ class CatalogItem extends StatelessWidget {
       child: Row(
         children: [
           Hero(
-            tag: catalog.id.toString(), // ✅ fixed
-            child: CatalogImage(
-              image: catalog.image,
-            ),
+            tag: catalog.id.toString(),
+            child: CatalogImage(image: catalog.image),
           ),
-
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,13 +56,13 @@ class CatalogItem extends StatelessWidget {
               children: [
                 catalog.name.text
                     .lg
-                    .color(MyTheme.darkBluishColor) // ✅ fixed
+                    .color(MyTheme.darkBluishColor)
                     .bold
                     .make(),
 
                 catalog.desc.text
                     .textStyle(
-                      Theme.of(context).textTheme.bodySmall, // ✅ fixed
+                      Theme.of(context).textTheme.bodySmall,
                     )
                     .make(),
 
@@ -74,16 +73,7 @@ class CatalogItem extends StatelessWidget {
                   buttonPadding: EdgeInsets.zero,
                   children: [
                     "\$${catalog.price}".text.bold.xl.make(),
-
-                   ElevatedButton(
-  onPressed: () {},
-  style: ElevatedButton.styleFrom(
-    backgroundColor: MyTheme.darkBluishColor,
-    foregroundColor: Colors.white, // ✅ fix
-    shape: const StadiumBorder(),
-  ),
-  child: "Add to cart".text.white.make(),
-)
+                    AddToCart(catalog: catalog),
                   ],
                 ).pOnly(right: 8.0),
               ],
@@ -92,10 +82,11 @@ class CatalogItem extends StatelessWidget {
         ],
       ),
     )
-        .color(Theme.of(context).cardColor) // ✅ safer
+        .color(Theme.of(context).cardColor)
         .rounded
         .square(150)
         .make()
         .py16();
   }
 }
+
