@@ -1,17 +1,19 @@
-# flutter_application_1
+📱 Flutter Catalog App
 
-A new Flutter project.
+A simple and responsive e-commerce catalog app built using Flutter. The app displays a list of products, allows users to view details, and manage items in a shopping cart.
 
-## Getting Started
+🚀 Features
+Browse product catalog
+View product details
+Add/remove items from cart
+Dynamic cart total price calculation
+Cart badge showing number of items
+Clean UI with light/dark theme support
+State management using VelocityX
+🛠 Tech Stack
+Flutter (UI Framework)
+Dart
+VelocityX (State Management)
+📌 Description
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project demonstrates building a basic shopping app with state management, navigation, and dynamic UI updates. It focuses on clean architecture and real-time updates using mutations.
