@@ -39,7 +39,7 @@ This project demonstrates how to build a basic shopping application with:
 
 - Developed as a Flutter learning project 🚀
 - <br>
-<img width="967" height="996" alt="image" src="https://github.com/user-attachments/assets/a9e6dfac-ebfd-4c72-a615-3e62c2cba921" />
+<img width="500" height="700" alt="image" src="https://github.com/user-attachments/assets/a9e6dfac-ebfd-4c72-a615-3e62c2cba921" />
 <br>
   <img width="466" height="487" alt="image" src="https://github.com/user-attachments/assets/bb2e6f59-333e-446e-8b0a-debe7bd66572" /><br>
   <img width="500" height="600" alt="Screenshot 2026-05-02 012156" src="https://github.com/user-attachments/assets/f16b3c3c-bc8e-4cd8-bd4b-440130c8f710" /><br>
