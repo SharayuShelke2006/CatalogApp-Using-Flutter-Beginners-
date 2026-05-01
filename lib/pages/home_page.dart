@@ -1,23 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+
 import 'package:flutter_application_1/models/catalog.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/item_widget.dart';
+import 'package:flutter_application_1/utils/routes.dart';
+import 'package:flutter_application_1/widgets/home_widgets/catalog_header.dart';
+import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final int days = 30;
-
   final String name = "Codepur";
-
-  bool isLoading = true;
 
   @override
   void initState() {
@@ -26,41 +28,58 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
+
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
+
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
+
     CatalogModel.items = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
         .toList();
-    setState(() {
-      isLoading = false;
-    });
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Catalog App"),
+      backgroundColor: Theme.of(context).canvasColor,
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.pushNamed(context, MyRoutes.cartRoute),
+
+        // ❌ context.theme.buttonColor removed
+        backgroundColor: MyTheme.darkBluishColor,
+
+        child: const Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: (isLoading)
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView.builder(
-                itemCount: CatalogModel.items.length,
-                itemBuilder: (context, index) {
-                  return ItemWidget(
-                    item: CatalogModel.items[index],
-                  );
-                },
-              ),
+
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.all(32),
+
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CatalogHeader(),
+
+              if (CatalogModel.items.isNotEmpty)
+                const CatalogList().expand()
+              else
+                const Center(
+                  child: CircularProgressIndicator(),
+                ).expand(),
+            ],
+          ),
+        ),
       ),
-      drawer: MyDrawer(),
     );
   }
 }
