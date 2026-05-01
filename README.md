@@ -14,6 +14,7 @@ State management using VelocityX
 Flutter (UI Framework)
 Dart
 VelocityX (State Management)
+
 📌 Description
 
 This project demonstrates building a basic shopping app with state management, navigation, and dynamic UI updates. It focuses on clean architecture and real-time updates using mutations.
